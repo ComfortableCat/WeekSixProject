@@ -5,18 +5,23 @@ import Content from "./components/Content";
 import SettingsBtn from "./components/SettingsBtn";
 
 export default function App() {
-  const [multiClick, setMultiClick] = useState(1);
+  const [multiClick, setMultiClick] = useState(
+    JSON.parse(localStorage.getItem("MultiClick")) || 1
+  );
   const [cps, setCps] = useState(JSON.parse(localStorage.getItem("cps")) || 1);
   const [count, setCount] = useState(
     JSON.parse(localStorage.getItem("count")) || 0
   );
-  const [volume, setVolume] = useState(80); //LOCAL STORAGE
+  const [volume, setVolume] = useState(
+    JSON.parse(localStorage.getItem("volume")) || 80
+  );
 
-  function changeVolume(event) {
-    setVolume(event.currentTarget.value);
-    document.body.volume = event.currentTarget.value / 100;
-  }
-  //-------------------------------incrementByCpsEverySecond--------------------------------//
+  useEffect(() => {
+    localStorage.setItem("cps", cps);
+    localStorage.setItem("count", count);
+    localStorage.setItem("multiClick", multiClick);
+    localStorage.setItem("volume", volume);
+  }, [cps, count, multiClick, volume]);
   useEffect(() => {
     const incrementCookies = setInterval(() => {
       setCount((count) => count + cps);
@@ -24,6 +29,9 @@ export default function App() {
     return () => clearInterval(incrementCookies);
   }, [cps]);
 
+  function changeVolume(event) {
+    setVolume(event.currentTarget.value);
+  }
   function priceCheck(cost) {
     if (cost <= count) {
       return true;
@@ -49,13 +57,14 @@ export default function App() {
         <SettingsBtn changeVolume={changeVolume} volume={volume} />
       </header>
       <main>
-        <Cookie setCount={setCount} multiClick={multiClick} />
+        <Cookie setCount={setCount} multiClick={multiClick} volume={volume} />
         <div className="content">
           <Content
             priceCheck={priceCheck}
             reduceCount={reduceCount}
             increaseCps={increaseCps}
             increaseMultiClick={increaseMultiClick}
+            multiClick={multiClick}
           />
         </div>
       </main>

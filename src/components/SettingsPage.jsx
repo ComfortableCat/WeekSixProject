@@ -9,8 +9,15 @@ export default function SettingsPage({ changeVolume, volume }) {
         min="0"
         value={volume}
       ></input>
-      <button>SAVE</button>
-      <button>reset</button>
+      <button onClick={() => window.location.reload()}>SAVE</button>
+      <button
+        onClick={() => {
+          localStorage.clear();
+          window.location.reload();
+        }}
+      >
+        RESET
+      </button>
     </div>
   );
 }

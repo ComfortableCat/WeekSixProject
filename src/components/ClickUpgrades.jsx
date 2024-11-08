@@ -25,6 +25,7 @@ export default function ClickUpgrades({
   priceCheck,
   reduceCount,
   increaseMultiClick,
+  multiClick,
 }) {
   //console.log("clickupgrade");
   const [multiClickUpgrades, setMultiClickUpgrades] = useState(
@@ -50,6 +51,7 @@ export default function ClickUpgrades({
   }
   return (
     <>
+      <p className="upgradeInfo">Click Power: {multiClick}</p>
       {multiClickUpgrades !== null &&
         multiClickUpgrades.map((upgrade, i) => (
           <ClickUnit

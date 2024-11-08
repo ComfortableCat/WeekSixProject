@@ -8,6 +8,7 @@ export default function Content({
   reduceCount,
   increaseMultiClick,
   increaseCps,
+  multiClick,
 }) {
   //console.log("Content");
   const [showUpgrades, setShowUpgrades] = useState(true);
@@ -26,6 +27,7 @@ export default function Content({
             priceCheck={priceCheck}
             reduceCount={reduceCount}
             increaseMultiClick={increaseMultiClick}
+            multiClick={multiClick}
           />
         )}
       </div>

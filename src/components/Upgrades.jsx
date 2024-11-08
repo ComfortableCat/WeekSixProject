@@ -25,6 +25,9 @@ export default function Upgrades({ priceCheck, reduceCount, increaseCps }) {
     }
   }, [upgrades]);
 
+  useEffect(() => {
+    localStorage.setItem("upgrades", JSON.stringify(upgrades));
+  }, [upgrades]);
   function buyUpgrade(id) {
     if (priceCheck(upgrades[id - 1].currentCost) === true) {
       const tempUpgrades = [...upgrades];
@@ -42,6 +45,7 @@ export default function Upgrades({ priceCheck, reduceCount, increaseCps }) {
 
   return (
     <>
+      <p className="upgradeInfo">Upgrades</p>
       {upgrades !== null &&
         upgrades.map((upgrade, i) => {
           return (

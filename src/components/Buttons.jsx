@@ -1,6 +1,6 @@
 export default function Buttons({ setShowUpgrades, showUpgrades }) {
   function handleClick(e) {
-    if (showUpgrades && e.currentTarget.textContent === "Buildings") {
+    if (showUpgrades && e.currentTarget.textContent === "Click Power") {
       setShowUpgrades(false);
     } else if (!showUpgrades && e.currentTarget.textContent === "Upgrades") {
       setShowUpgrades(true);
@@ -8,8 +8,8 @@ export default function Buttons({ setShowUpgrades, showUpgrades }) {
   }
   return (
     <nav>
-      <button onClick={handleClick}>Buildings</button>
       <button onClick={handleClick}>Upgrades</button>
+      <button onClick={handleClick}>Click Power</button>
     </nav>
   );
 }

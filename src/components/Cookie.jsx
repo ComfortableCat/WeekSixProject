@@ -1,12 +1,13 @@
 import { useRef } from "react";
 const audios = ["/sounds/Eat1.ogg", "/sounds/Eat2.ogg", "/sounds/Eat3.ogg"];
 
-export default function Cookie({ setCount, multiClick }) {
+export default function Cookie({ setCount, multiClick, volume }) {
   const soundIndex = useRef(0);
 
   function handleClick() {
     setCount((count) => count + multiClick);
     let audio = new Audio(audios[soundIndex.current]);
+    audio.volume = volume / 100;
     audio.play();
     soundIndex.current = soundIndex.current + 1;
     if (soundIndex.current > 2) {
@@ -15,11 +16,7 @@ export default function Cookie({ setCount, multiClick }) {
   }
   return (
     <>
-      <img
-        className="cookie"
-        src="/images/MC cookie.webp"
-        onClick={() => handleClick()}
-      />
+      <button className="cookie" onClick={() => handleClick()}></button>
     </>
   );
 }
