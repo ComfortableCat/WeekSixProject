@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import Counter from "./components/Counter";
 import Cookie from "./components/Cookie";
 import Content from "./components/Content";
+import SettingsBtn from "./components/SettingsBtn";
 
 export default function App() {
   const [multiClick, setMultiClick] = useState(1);
@@ -9,7 +10,12 @@ export default function App() {
   const [count, setCount] = useState(
     JSON.parse(localStorage.getItem("count")) || 0
   );
+  const [volume, setVolume] = useState(80); //LOCAL STORAGE
 
+  function changeVolume(event) {
+    setVolume(event.currentTarget.value);
+    document.body.volume = event.currentTarget.value / 100;
+  }
   //-------------------------------incrementByCpsEverySecond--------------------------------//
   useEffect(() => {
     const incrementCookies = setInterval(() => {
@@ -40,6 +46,7 @@ export default function App() {
       <header>
         <Counter name="Cookies" number={count} />
         <Counter name="Cps" number={cps} />
+        <SettingsBtn changeVolume={changeVolume} volume={volume} />
       </header>
       <main>
         <Cookie setCount={setCount} multiClick={multiClick} />
