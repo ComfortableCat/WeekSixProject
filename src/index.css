@@ -1,0 +1,88 @@
+@font-face {
+  font-family: minecraft;
+  src: url(/MinecraftRegular-Bmg3.otf);
+}
+
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  font-family: minecraft, Arial, Helvetica, sans-serif;
+}
+.counter {
+  text-align: center;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.cookie {
+  border-radius: 100%;
+  margin: auto;
+  width: 35vh;
+  height: 35vh;
+  background-color: transparent;
+}
+.cookie:hover {
+  transform: scale(1.05);
+}
+
+nav {
+  width: 100%;
+  margin: 5px 0;
+  display: flex;
+  justify-content: space-around;
+}
+nav button {
+  height: 50px;
+  font-family: minecraft, Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  width: 45%;
+}
+
+.content {
+  width: 60%;
+  min-width: 360px;
+}
+.upgradeContainer {
+  padding: 10px;
+  border-radius: 15px;
+  border: 2px solid rgb(97, 46, 10);
+  overflow-y: scroll;
+  height: 40vh;
+  scrollbar-width: none;
+}
+
+.upgrade,
+.clickUpgrade {
+  text-align: center;
+  padding: 5px 20px;
+  margin: 5px 0;
+  display: flex;
+  justify-content: space-between;
+  border-radius: 15px;
+  border: 2px solid rgb(97, 46, 10);
+  background-color: rgb(216, 164, 118);
+}
+
+.upgrade button,
+.clickUpgrade button {
+  font-family: minecraft, Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  color: white;
+  text-align: center;
+  width: 60px;
+  border-radius: 8px;
+  border: 2px solid rgb(97, 46, 10);
+  background-color: rgb(97, 46, 10);
+}
+
+.upgrade button:hover,
+.clickUpgrade button:hover {
+  background-color: rgb(216, 164, 118);
+  color: black;
+}
